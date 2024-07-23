@@ -1,4 +1,4 @@
-package com.greenerself.sustainabilityApp;
+package com.greenerself.sustainability;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

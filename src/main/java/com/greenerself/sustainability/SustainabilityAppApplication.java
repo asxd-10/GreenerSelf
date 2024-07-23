@@ -1,4 +1,4 @@
-package com.greenerself.sustainabilityApp;
+package com.greenerself.sustainability;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
