@@ -6,15 +6,16 @@ import com.greenerself.sustainability.util.vo.LoginRequest;
 import com.greenerself.sustainability.util.vo.ResponseVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import static com.greenerself.sustainability.constants.ApplicationConstants.ControllerEndpoints.AUTH;
+import static com.greenerself.sustainability.constants.ApplicationConstants.ControllerEndpoints.MAIN;
 import static com.greenerself.sustainability.constants.ApplicationConstants.SecurityEndpoints.LOGIN;
+import static com.greenerself.sustainability.constants.ApplicationConstants.SecurityEndpoints.REGISTER;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping(AUTH)
+@ControllerAdvice
 public class AuthController {
     @Autowired
     private IAuthService authService;
@@ -32,7 +33,7 @@ public class AuthController {
 //        }
     }
 
-    @PostMapping("/register")
+    @PostMapping(REGISTER)
     public ResponseEntity<ResponseVO> register(@RequestBody User user) {
         authService.register(user);
         ResponseVO resp = new ResponseVO();

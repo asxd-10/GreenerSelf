@@ -11,6 +11,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,6 +22,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import static com.greenerself.sustainability.constants.ApplicationConstants.ControllerEndpoints.AUTH;
+import static com.greenerself.sustainability.constants.ApplicationConstants.ControllerEndpoints.MAIN;
 import static com.greenerself.sustainability.constants.ApplicationConstants.SecurityEndpoints.*;
 
 @Configuration
@@ -38,28 +41,35 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()).authorizeRequests(authorizeRequests ->
+                .csrf(AbstractHttpConfigurer::disable)
+                .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers(REGISTER, LOGIN).permitAll()
-                                .anyRequest().authenticated()
-                ).authenticationProvider(authenticationProvider())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
-                .formLogin(formLogin ->
-                formLogin
-                        .loginPage(LOGIN)
-                        .defaultSuccessUrl(HOME, true)
-                        .permitAll()
-        )
-                .logout(logout ->
-                        logout
-                                .logoutRequestMatcher(new AntPathRequestMatcher(LOGOUT))
-                                .logoutSuccessUrl(LOGIN)
+//                                .requestMatchers(AUTH+"/**", MAIN+AUTH+"/**")
+                                .anyRequest()
                                 .permitAll()
+//                                .anyRequest().authenticated()
                 );
+//                .authenticationProvider(authenticationProvider())
+//                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
+//                .formLogin(formLogin ->
+//                formLogin
+//                        .loginPage(AUTH+LOGIN)
+//                        .defaultSuccessUrl(HOME, true)
+//                        .failureUrl(AUTH+LOGIN+"?error=true")
+//                        .permitAll()
+//        )
+//                .logout(logout ->
+//                        logout
+//                                .logoutRequestMatcher(new AntPathRequestMatcher(AUTH+LOGOUT))
+//                                .logoutSuccessUrl(AUTH+LOGIN+"?logout=true")
+//                                .permitAll()
+//                );
 
         return http.build();
     }
+
+
 
     @Bean
     public UserDetailsService userDetailsService() {
