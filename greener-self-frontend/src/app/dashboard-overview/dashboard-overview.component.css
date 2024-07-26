@@ -1,0 +1,22 @@
+.dashboard-overview {
+  padding: 20px;
+}
+
+.metrics {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.metrics .metric-card {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}
+
+.recent-activities {
+  margin-top: 30px;
+}
