@@ -1,9 +1,10 @@
 package com.greenerself.sustainability.auth.controller;
 
 import com.greenerself.sustainability.auth.service.IAuthService;
-import com.greenerself.sustainability.userlanding.entity.User;
 import com.greenerself.sustainability.util.vo.LoginRequest;
 import com.greenerself.sustainability.util.vo.ResponseVO;
+import com.greenerself.sustainability.util.vo.UserRegistrationRequest;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,10 +35,10 @@ public class AuthController {
     }
 
     @PostMapping(REGISTER)
-    public ResponseEntity<ResponseVO> register(@RequestBody User user) {
-        authService.register(user);
+    public ResponseEntity<ResponseVO> register(@Valid @RequestBody UserRegistrationRequest userRegistrationRequest) {
+        authService.register(userRegistrationRequest);
         ResponseVO resp = new ResponseVO();
-        resp.setData(user.getUsername());
+        resp.setData(userRegistrationRequest.getUsername());
         resp.setSuccess(true);
         resp.setActionMessage("User registered successfully");
         return ResponseEntity.ok(resp);
