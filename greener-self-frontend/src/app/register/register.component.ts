@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-register',
-  standalone: true,
-  imports: [],
   templateUrl: './register.component.html',
+  imports: [FormsModule, HttpClientModule],
+  standalone: true,
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
