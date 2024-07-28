@@ -26,8 +26,7 @@ public class AuthController {
         String token = authService.login(loginRequest.getUsername(), loginRequest.getPassword());
         ResponseVO resp = new ResponseVO();
         resp.setData(token);
-        resp.setSuccess(true);
-        resp.setActionMessage("Login successful");
+        resp.addActionMessage("USR_LOGIN_SUCCESS","Login successful");
         return ResponseEntity.ok(resp);
 //        } else {
 //            return ResponseEntity.status(401).body(new ResponseMessage("Invalid credentials"));
@@ -39,8 +38,7 @@ public class AuthController {
         authService.register(userRegistrationRequest);
         ResponseVO resp = new ResponseVO();
         resp.setData(userRegistrationRequest.getUsername());
-        resp.setSuccess(true);
-        resp.setActionMessage("User registered successfully");
+        resp.addActionMessage("USR_REG_SUCCESS","User registered successfully");
         return ResponseEntity.ok(resp);
 //        } else {
 //            return ResponseEntity.status(400).body(new ResponseMessage("Registration failed"));

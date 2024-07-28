@@ -53,7 +53,7 @@ public class UserService implements UserDetailsService {
         }
 
         if (!isValidPassword(userRegistrationRequest.getPassword(), userRegistrationRequest.getUsername())) {
-            throw new IllegalArgumentException("Invalid password. Passwrod must contain Minimum eight and maximum 25 characters, at least one uppercase letter, one lowercase letter, one number and one special character \n Also it must not contain your username & 'password'");
+            throw new IllegalArgumentException("Invalid password. Password must contain Minimum eight and maximum 25 characters, at least one uppercase letter, one lowercase letter, one number and one special character \n Also it must not contain your username & 'password'");
         }
 
 
