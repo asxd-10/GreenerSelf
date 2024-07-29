@@ -16,16 +16,17 @@ public class UserAgreement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "agreement_type", nullable = false)
-    private String agreementType;
+    @ManyToOne
+    @JoinColumn(name = "agreement_id", nullable = false)
+    private Agreement agreement;
 
-    @Column(name = "agreement_version", nullable = false)
-    private String agreementVersion;
+    @Column(nullable = false)
+    private boolean accepted;
 
-    @Column(name = "accepted_at", nullable = false)
+    @Column(name = "accepted_at", nullable = false, updatable = false)
     private Timestamp acceptedAt;
 }
