@@ -1,0 +1,22 @@
+<div class="agreement-container">
+  <div class="content-section">
+    <h2 *ngIf="currentContent === 'terms'">Terms and Conditions</h2>
+    <h2 *ngIf="currentContent === 'privacy'">Privacy Policy</h2>
+    <p *ngIf="currentContent === 'terms'">
+      <!-- Display the Terms and Conditions content here -->
+    </p>
+    <p *ngIf="currentContent === 'privacy'">
+      <!-- Display the Privacy Policy content here -->
+    </p>
+  </div>
+
+  <app-checkbox
+    [label]="currentContent === 'terms' ? 'I accept the Terms and Conditions' : 'I accept the Privacy Policy'"
+    (change)="onCheckboxChange($event)"
+  ></app-checkbox>
+
+  <app-navigation
+    [currentContent]="currentContent"
+    (navigate)="onNavigate($event)"
+  ></app-navigation>
+</div>

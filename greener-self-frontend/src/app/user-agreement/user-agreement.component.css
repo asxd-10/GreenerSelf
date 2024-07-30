@@ -1,0 +1,11 @@
+.agreement-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.content-section {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+}

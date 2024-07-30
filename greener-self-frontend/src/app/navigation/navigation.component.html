@@ -1,0 +1,8 @@
+<div class="navigation-buttons">
+  <button *ngIf="currentContent === 'terms'" (click)="navigateToPrivacyPolicy()">
+    Continue to Privacy Policy
+  </button>
+  <button *ngIf="currentContent === 'privacy'" (click)="navigateToTerms()">
+    Back to Terms and Conditions
+  </button>
+</div>

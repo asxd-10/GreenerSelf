@@ -1,20 +1,18 @@
-package com.greenerself.sustainability.organizations.entity;
+package com.greenerself.sustainability.metrics.entity;
 
-import com.greenerself.sustainability.metrics.entity.Metric;
+import com.greenerself.sustainability.organizations.entity.Organization;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Entity
-@Table(name = "goals")
+@Table(name = "organization_metric_data")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Goal {
+public class OrganizationMetricData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,17 +26,14 @@ public class Goal {
     @JoinColumn(name = "metric_id", nullable = false)
     private Metric metric;
 
-    @Column(name = "goal_type", nullable = false)
-    private String goalType;
+    @Column(name = "metric_value", nullable = true)
+    private Double metricValue;
 
-    @Column(name = "target_value", nullable = false)
-    private Double targetValue;
+    @Column(name = "metric_category", nullable = true)
+    private String metricCategory;
 
-    @Column(name = "current_value", nullable = true)
-    private Double currentValue;
-
-    @Column(name = "deadline", nullable = false)
-    private Date deadline;
+    @Column(name = "measured_at", nullable = false)
+    private Timestamp measuredAt;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private Timestamp createdAt;

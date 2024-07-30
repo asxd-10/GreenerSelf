@@ -1,6 +1,6 @@
 package com.greenerself.sustainability.organizations.entity;
 
-import com.greenerself.sustainability.metrics.entity.SustainabilityMetric;
+import com.greenerself.sustainability.metrics.entity.Metric;
 import com.greenerself.sustainability.userlanding.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -58,7 +58,4 @@ public class Organization {
 
     @OneToMany(mappedBy = "organization", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<User> users;
-
-    @OneToMany(mappedBy = "organization", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<SustainabilityMetric> sustainabilityMetrics;
 }
