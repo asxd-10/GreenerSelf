@@ -14,7 +14,7 @@ public class ApplicationConstants {
     }
 
     public class APIConstants{
-        private static final String NEWSAPI_KEY = "c3ede90ca9c24b84af7aba14306c7df3";
+        public static final String NEWSAPI_KEY = "c3ede90ca9c24b84af7aba14306c7df3";
         public static final String NEWSAPI_BASE_URL = "https://newsapi.org/v2/";
     }
 }
